@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import {fb} from '../firebase'
+//import {fb} from '../firebase'
 export default {
   name: "Login",
   props: {
