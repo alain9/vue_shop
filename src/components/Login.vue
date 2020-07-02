@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import {fb} from '../firebase'
 export default {
   name: "Login",
   props: {
@@ -90,7 +91,18 @@ export default {
  {
      register()
             {
-                
+                  fb.auth().createUserWithEmailAndPassword(this.email, this.password)
+                   .catch(function(error) {
+                  // Handle Errors here.
+                      var errorCode = error.code;
+                      var errorMessage = error.message;
+                      if (errorCode == 'auth/weak-password') {
+                        alert('The password is too weak.');
+                      } else {
+                        alert(errorMessage);
+                      }
+                      console.log(error);
+                    });
             }
  }
 };
